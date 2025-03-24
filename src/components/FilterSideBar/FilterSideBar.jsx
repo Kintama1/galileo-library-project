@@ -83,12 +83,12 @@ function FilterSidebar({ onSidebarToggle, onFilterChange }) {
         
         {/* Edition Type Filter */}
         <FilterItem
-          title={filterConfig.editionType.title}
-          type={filterConfig.editionType.type}
-          name={filterConfig.editionType.name}
-          value={filters.editionType}
+          title={filterConfig.class.title}
+          type={filterConfig.class.type}
+          name={filterConfig.class.name}
+          value={filters.class}
           onChange={handleFilterChange}
-          options={filterConfig.editionType.options}
+          options={filterConfig.class.options}
         />
  
         {/* Country Filter */}

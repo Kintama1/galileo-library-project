@@ -15,7 +15,7 @@ function Book(props) {
     };
     const editionClass = getEditionClass();
     function handleBookClick(){
-        window.open(`/book/${props.id || ''}`, '_blank');
+        window.open(`/book/${props.id|| ''}`, '_blank');
     }
     return (
         <div className="book-container"

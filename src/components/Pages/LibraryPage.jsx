@@ -5,13 +5,14 @@ import Bookshelf from "../Bookshelf/Bookshelf";
 import Layout from "../Layout/Layout";
 import SearchBar from "../SearchBar/SearchBar";
 import FilterSidebar from "../FilterSideBar/FilterSideBar";
+import FilterSummary from "../FilterSideBar/FilterSummary";
 import { useParams, Link } from "react-router-dom";
 import { useLibrary } from "../../context/LibraryContext";
 import { filterBooks } from "../../utils/bookFilters";
 
 function LibraryPage() {
     const [sidebarExpanded, setSidebarExpanded] = useState(false);
-    const { booksById, booksArray, loading, error, filters } = useLibrary();
+    const { booksById, loading, error,  debouncedFilters, resetFilters } = useLibrary();
     const { pageNumber } = useParams();
     
     if (loading) {
@@ -25,7 +26,7 @@ function LibraryPage() {
 
     const currentPage = pageNumber ? parseInt(pageNumber) : 1;
     const booksPerPage = 100;
-    const totalBooks = booksArray.length;
+    const totalBooks = Object.keys(booksById).length;
     const totalPages = Math.ceil(totalBooks / booksPerPage);
     
     // Function to generate page numbers to display
@@ -65,11 +66,10 @@ function LibraryPage() {
     const handleSidebarToggle = (isExpanded) => {
         setSidebarExpanded(isExpanded);
     };
-    if (sidebarExpanded) {
+    const booksArray = Object.values(booksById);
+    const filteredBooks = sidebarExpanded ? filterBooks(booksArray, debouncedFilters) : booksArray;
+    const pageBooks = getPaginatedBooks(currentPage, filteredBooks);
 
-    };
-    const pageBooks = getPaginatedBooks(currentPage, booksArray);
-    
 
     return (
         <Layout>
@@ -82,9 +82,38 @@ function LibraryPage() {
           <div className="nav">
             <SearchBar books={booksArray} />
           </div>
+          {(debouncedFilters.yearFrom || debouncedFilters.yearTo || 
+            debouncedFilters.class !== 'all' || 
+            debouncedFilters.country !== 'all' || 
+            debouncedFilters.city !== 'all' || 
+            debouncedFilters.format !== 'all') && (
+            <div className="active-filters-indicator">
+                Filters applied
+            </div>
+            )}
         </div>
         
+        {filteredBooks.length === 0 ? (
+        <div className="no-results">
+            <h3>No books match your filter criteria</h3>
+            <button 
+            className="reset-button" 
+            onClick={resetFilters}
+            >
+            Reset Filters
+            </button>
+        </div>
+        ) : (
+            <>
+            <FilterSummary 
+                filteredCount={filteredBooks.length}
+                totalCount={totalBooks}
+                activeFilters={debouncedFilters}
+                onReset={resetFilters}
+                />
         <Bookshelf books={pageBooks} />
+        </>
+        )}
             <div className="pagination-controls">
                 {currentPage > 1 && (
                     <Link to={`/library/page/${currentPage - 1}`} className="pagination-link">Previous</Link>

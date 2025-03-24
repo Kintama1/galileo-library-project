@@ -10,12 +10,12 @@ function Bookshelf({books}) {
               {books.map((book, index) => (
                   <Book
                       key={index}
-                      id = {book.id}
-                      title={processTitle(book.title)}
-                      author={book.author}
-                      height={book.height}
-                      spineWidth={book.spineWidth}
-                      editionType={book.editionType}
+                      id = {book.ID}
+                      title={processTitle(book.Title)}
+                      author={book.Author}
+                      height={book.Height}
+                      spineWidth={book.SpineWidth}
+                      editionType={book.Class}
                   />
               ))}
           </div>

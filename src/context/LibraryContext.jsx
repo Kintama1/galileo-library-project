@@ -2,10 +2,12 @@ import React, { useEffect, createContext, useState, useContext, } from "react";
 import { fetchBooksFromSheet } from "../utils/api";
 import { prepareBooks } from "../utils/booksUtil";
 import { generateFilterConfig } from "../utils/bookFilters";
+import useDebounce  from '../hooks/useDebounce.js';
+
+
 const LibraryContext = createContext();
 
 export default function LibraryProvider({children}) {
-    const [booksArray, setBooksArray] = useState([]);
     const [booksById, setBooksByID] = useState({});
     const [loading, setLoading] = useState(true);
     const [error,setError] = useState(null)
@@ -13,11 +15,19 @@ export default function LibraryProvider({children}) {
     const [filters, setFilters] = useState({
         yearFrom: '',
         yearTo: '',
-        editionType: 'all',
+        class: 'all',
         country: 'all',
         city: 'all',
         format: 'all',
     });
+    const debouncedFilters = {
+        yearFrom: useDebounce(filters.yearFrom, 500),
+        yearTo: useDebounce(filters.yearTo, 500),
+        class: filters.class,
+        country: filters.country,
+        city: filters.city,
+        format: filters.format,
+    };
 
     const [filterConfig, setFilterConfig] = useState(null);
     useEffect(()=>{
@@ -25,8 +35,7 @@ export default function LibraryProvider({children}) {
             try {
             
                 const rawData = await fetchBooksFromSheet();
-                const {booksArray, booksByID} = prepareBooks(rawData);
-                setBooksArray(booksArray);
+                const {booksByID} = prepareBooks(rawData);
                 setBooksByID(booksByID);
                 setFilterConfig(generateFilterConfig(Object.values(booksByID)));
                 setLoading(false);
@@ -51,18 +60,18 @@ export default function LibraryProvider({children}) {
         setFilters({
             yearFrom: '',
             yearTo: '',
-            editionType: 'all',
+            class: 'all',
             city: 'all',
             format: 'all',
             country: 'all'
         });
     };
     const value = {
-        booksArray,
         booksById,
         loading,
         error,
         filters,
+        debouncedFilters,
         filterConfig,
         updateFilter,
         resetFilters

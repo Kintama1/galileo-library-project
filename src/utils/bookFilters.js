@@ -17,10 +17,10 @@ export const generateFilterConfig = (books) => {
       min : Math.min(...getUniqueValues(books, 'YearofPublication').filter(year => !isNaN(Number(year)))),
       max : Math.max(...getUniqueValues(books, 'YearofPublication').filter(year => !isNaN(Number(year)))),
     },
-    editionType: {
+    class: {
       type: 'select',
-      name: 'editionType',
-      title: 'Edition Type',
+      name: 'class',
+      title: 'Manuscript Class',
       options: createSelectOptions(books, 'Class', 'All Editions')
     },
     country: {
@@ -90,6 +90,7 @@ export const countActiveFilters = (filters) => {
         }
       }
       // Edition type/Class filter
+  
       if (filters.class && filters.class !== 'all' && book.Class) {
         if (book.Class !== filters.class) {
           return false;
@@ -104,8 +105,8 @@ export const countActiveFilters = (filters) => {
       }
 
       // Place of publication filter
-      if (filters.placeOfPublication && filters.placeOfPublication !== 'all' && book.PlaceofPublication) {
-        if (book.PlaceofPublication !== filters.placeOfPublication) {
+      if (filters.city && filters.city !== 'all' && book.PlaceofPublication) {
+        if (book.PlaceofPublication !== filters.city) {
           return false;
         }
       }
