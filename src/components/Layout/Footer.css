@@ -1,0 +1,17 @@
+.decorative-footer {
+    margin-top: 3rem;
+    text-align: center;
+  }
+  
+  .footer-pattern {
+    height: 5px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin-bottom: 1rem;
+  }
+  
+  .footer-text {
+    font-style: italic;
+    color: var(--accent3);
+    font-size: 0.9rem;
+    padding-bottom: 1rem;
+  }

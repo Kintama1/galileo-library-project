@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Paprika:700|Paprika:400');
+/* https://www.realtimecolors.com/?colors=151412-fafaf8-a6a163-d7d4a7-cdc76f&fonts=Paprika-Paprika */
+body {
+  font-family: 'Paprika';
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Paprika';
+  font-weight: 700;
+}
+
+html {font-size: 100%;} /* 16px */
+
+h1 {font-size: 4.210rem; /* 67.36px */}
+
+h2 {font-size: 3.158rem; /* 50.56px */}
+
+h3 {font-size: 2.369rem; /* 37.92px */}
+
+h4 {font-size: 1.777rem; /* 28.48px */}
+
+h5 {font-size: 1.333rem; /* 21.28px */}
+
+small {font-size: 0.750rem; /* 12px */}
+
+@import url('https://fonts.googleapis.com/css?family=Chilanka:700|Chilanka:400');
+/* https://www.realtimecolors.com/?colors=151412-fafaf8-a6a163-d7d4a7-cdc76f&fonts=Chilanka-Chilanka */
+body {
+  font-family: 'Chilanka';
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Chilanka';
+  font-weight: 700;
+}
+
+html {font-size: 100%;} /* 16px */
+
+h1 {font-size: 4.210rem; /* 67.36px */}
+
+h2 {font-size: 3.158rem; /* 50.56px */}
+
+h3 {font-size: 2.369rem; /* 37.92px */}
+
+h4 {font-size: 1.777rem; /* 28.48px */}
+
+h5 {font-size: 1.333rem; /* 21.28px */}
+
+small {font-size: 0.750rem; /* 12px */}
+
+
+@import url('https://fonts.googleapis.com/css?family=Mukta%20Malar:700|Mukta%20Malar:400');
+/* https://www.realtimecolors.com/?colors=151412-fafaf8-a6a163-d7d4a7-cdc76f&fonts=Mukta%20Malar-Mukta%20Malar */
+body {
+  font-family: 'Mukta Malar';
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Mukta Malar';
+  font-weight: 700;
+}
+
+html {font-size: 100%;} /* 16px */
+
+h1 {font-size: 4.210rem; /* 67.36px */}
+
+h2 {font-size: 3.158rem; /* 50.56px */}
+
+h3 {font-size: 2.369rem; /* 37.92px */}
+
+h4 {font-size: 1.777rem; /* 28.48px */}
+
+h5 {font-size: 1.333rem; /* 21.28px */}
+
+small {font-size: 0.750rem; /* 12px */}
+
+
+
+/* Color templates: https://www.realtimecolors.com/?colors=0f0a06-fdfcfa-c68d50-dcb48a-d49d63&fonts=Chilanka-Chilanka */
+
+
+@import url('https://fonts.googleapis.com/css?family=Noto%20Sans%20Egyptian%20Hieroglyphs:700|Noto%20Sans%20Egyptian%20Hieroglyphs:400');
+
+body {
+  font-family: 'Noto Sans Egyptian Hieroglyphs';
+  font-weight: 400;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Noto Sans Egyptian Hieroglyphs';
+  font-weight: 700;
+}
+
+html {font-size: 100%;} /* 16px */
+
+h1 {font-size: 4.210rem; /* 67.36px */}
+
+h2 {font-size: 3.158rem; /* 50.56px */}
+
+h3 {font-size: 2.369rem; /* 37.92px */}
+
+h4 {font-size: 1.777rem; /* 28.48px */}
+
+h5 {font-size: 1.333rem; /* 21.28px */}
+
+small {font-size: 0.750rem; /* 12px */}
+
+--text: rgb(15, 10, 6);
+--background: rgb(250, 245, 235);
+--primary: rgb(198, 141, 80);
+--secondary: rgb(220, 180, 138);
+--accent: rgb(212, 157, 99);

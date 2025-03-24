@@ -1,0 +1,98 @@
+/* BookPage.css */
+.book-page-container {
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+  }
+  
+  /* Navigation bar with back button */
+  .navigation-bar {
+    margin-bottom: 2rem;
+  }
+  
+  .back-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--accent);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .back-button:hover {
+    background-color: var(--accent3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Decorative header pattern */
+  .decorative-header {
+    height: 10px;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--accent),
+      var(--accent) 10px,
+      var(--accent3) 10px,
+      var(--accent3) 20px
+    );
+    border-radius: 5px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Book content container with animation */
+  .book-content {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  /* Loading and error states */
+  .loading-state, .error-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    font-size: 1.2rem;
+    background-color: var(--secondary2);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-top: 2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .error-state {
+    color: #d9534f;
+    border-left: 5px solid #d9534f;
+  }
+  
+  /* Book not found message */
+  .book-not-found {
+    text-align: center;
+    padding: 3rem;
+    background-color: var(--secondary2);
+    border-radius: 10px;
+    border: 1px solid var(--accent);
+    margin-top: 2rem;
+  }
+  
+  .book-not-found h2 {
+    color: #d9534f;
+    margin-bottom: 1rem;
+  }
+
+  
+  /* Animation for content */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Add responsive adjustments */
+  @media (max-width: 768px) {
+    .book-page-container {
+      padding: 1rem;
+    }
+  }

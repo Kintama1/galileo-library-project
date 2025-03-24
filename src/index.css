@@ -1,13 +1,52 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css?family=Noto%20Sans%20Egyptian%20Hieroglyphs:700|Noto%20Sans%20Egyptian%20Hieroglyphs:400');
+
+:root {
+  --text: rgb(43, 37, 33);
+  --background: rgb(251, 240, 217);
+  --primary: rgb(198, 141, 80);
+  --secondary: rgb(220, 180, 138);
+  --secondary2: rgb(255, 229, 201);
+  --accent: rgb(212, 157, 99);
+  --accent2: rgb(188, 131, 70);
+  --accent3: rgb(135, 97, 56);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: 'Noto Sans Egyptian Hieroglyphs';
+  font-weight: 400;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Noto Sans Egyptian Hieroglyphs';
+  font-weight: 700;
+}
+
+html {
+  font-size: 100%; /* 16px */
+}
+
+h1 {
+  font-size: 4.210rem; /* 67.36px */
+}
+
+h2 {
+  font-size: 3.158rem; /* 50.56px */
+}
+
+h3 {
+  font-size: 2.369rem; /* 37.92px */
+}
+
+h4 {
+  font-size: 1.777rem; /* 28.48px */
+}
+
+h5 {
+  font-size: 1.333rem; /* 21.28px */
+}
+
+small {
+  font-size: 0.750rem; /* 12px */
 }

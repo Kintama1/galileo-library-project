@@ -1,0 +1,29 @@
+.bookshelf {
+    position: relative;
+    margin-bottom: 40px;
+    max-width: 1200px;
+    margin: 3rem 4rem;
+    align-items: center;
+    
+  }
+  
+  .bookshelf-books {
+    display: flex;
+    row-gap: 40px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    min-height: var(--shelf-height);
+    position: relative;
+    /* Adding padding at the bottom to accommodate shelves */
+    padding-bottom: 20px;
+
+  }
+  
+  /* .bookshelf-surface {
+    height: 20px;
+    background-color: var(--shelf-color);
+    position: absolute;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+ 
+  } */
+  

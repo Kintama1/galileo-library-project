@@ -1,0 +1,169 @@
+
+/* Thrree vars available
+--spine-width;
+--book-height;
+--cover-widht
+ */
+.book {
+    contain: layout size;
+    position: relative;
+    width: var(--spine-width);
+    height: var(--book-height);
+    transform-style: preserve-3d;
+    transform : translateZ(-30px) rotateY(-5deg) rotateX(-7deg);
+    transition: transform 0.5s;
+    perspective: 10000px;
+    cursor: pointer;
+    margin: 2px;
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+
+
+.book.hovered{
+    /* I want to understand the rotation here better */
+    transform: rotateY(-45deg) translateZ(100px) translateX(-50px) translateY(-20px);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3), 
+    inset 0 0 5px rgba(255, 255, 255, 0.5);
+
+    
+}
+
+.book-side {
+    position: absolute;
+    box-sizing: border-box;
+    transform-origin: left center;
+}
+
+.book-spine {
+    width: var(--spine-width);
+    height: var(--book-height);
+    left : 0;
+    background-color: #9b0000 ;
+    transform: rotateY(0deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgb(233, 230, 230);
+    border-bottom: 1px solid rgb(233, 230, 230);
+    border-left: 1px solid rgba(0,0,0,0.3);
+    border-right: 1px solid rgba(255,255,255,0.2);
+}
+.spine-decoration {
+  position: absolute;
+  width: var(--spine-width);         /* Width of the line (less than spine width) */
+  height: 2px;         /* Height of the line (thin) */
+  background: rgba(255,255,255,0.2);  /* Light color for highlight */
+  left: 0px;        
+}
+
+/* I want to position them with somehow so it adjustable */
+.spine-decoration:nth-child(1) { top: 15px }  /* Near top */
+.spine-decoration:nth-child(2) { top: calc(var(--book-height) - 15px);} /* Near bottom */
+
+.book-title {
+  writing-mode: vertical-rl;
+
+  text-orientation: mixed;
+  color: #f8f0e3;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+  font-size: 16px;
+}
+.book-title, .book-cover-title {
+  text-shadow: 
+  0px 1px 1px rgba(255,255,255,0.8),
+  0px -1px 1px rgba(0,0,0,0.8);
+  letter-spacing: 1px;
+}
+.book-top {
+  width: var(--spine-width);
+  height: var(--cover-width);
+  transform: rotateX(-90deg) translateZ(-140px) translateY(73px) translateX(-0.5px);
+  top: 65px;
+  border: 1px solid rgba(0,0,0,0.8);
+  background: repeating-linear-gradient(
+    90deg,
+    #f1f1f1 0px,
+    #f1f1f1 3px,    /* Thinner white sections for pages */
+    #9f9f9f 3px,    /* Light gray instead of black for page edges */
+    #d9d9d9 4px     /* Thinner line for page edge */
+  );
+}
+
+.book-cover {
+    width: var(--cover-width);
+    height: var(--book-height);
+    /* in the function this left should always be the width of the previous one */
+    left : var(--spine-width); 
+    background-color: #b50000;
+    transform: rotateY(90deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #f8f0e3; 
+    justify-content: center;
+    padding: 15px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+  .book-cover-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: center;
+    visibility: hidden;
+  }
+
+
+  .book-cover-author {
+    font-weight: normal;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+    visibility: hidden;
+  }
+  .book-cover-title, .book-cover-author {
+    transition: visibility 0s linear 0.3s; /* Delay hiding by 0.3 seconds */
+    visibility: hidden;
+  }
+  
+  .book-cover-title.hovered, .book-cover-author.hovered {
+    transition-delay: 0s;
+    visibility: visible;
+  }
+
+/* Container to hold both book and its shelf */
+.book-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 3px 40px 3px; /* Matches your original bookshelf gap */
+  position: relative;
+}
+
+/* Shelf styling */
+.book-shelf {
+  height: 15px;
+  background-color: #8B4513; /* Same as your original shelf color */
+  width: calc(var(--spine-width) + 10px); /* Slightly wider than the book */
+  position: absolute;
+  bottom: -15px; /* Position directly under the book */
+  border-radius: 0 0 3px 3px; /* Rounded bottom edges */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+}
+
+/* Add depth to the shelf */
+.book-shelf::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 3px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 3px 3px;
+}
+  
+  /* Add depth to the shelf */

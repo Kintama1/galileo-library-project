@@ -1,0 +1,203 @@
+.title {
+    text-align: center;
+    color: var(--accent2);
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+/* Add decorative elements around the Book ID */
+.title h2 {
+    display: inline-block;
+    position: relative;
+}
+
+.title h2::before,
+.title h2::after {
+    content: "❧";  /* Decorative fleuron character */
+    color: var(--accent);
+    margin: 0 15px;
+    font-size: 1.2em;
+    opacity: 0.7;
+}
+
+.card {
+    align-items: center;
+    max-width: 1200px;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 1rem;
+    padding: 2rem;
+    background-color: var(--secondary2);
+    border-radius: 20px;
+    border: 1px solid var(--accent);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Add a decorative element to the top of the card */
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.5;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 2rem;
+    color: var(--accent3);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+/* Add decorative underline to the title */
+.card-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+.relevant-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 1.5px solid var(--accent);
+    border-radius: 20px;
+    padding: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+/* Add a subtle hover effect to each info item */
+.info {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+.info:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+h3 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.property-name {
+    color: var(--accent3);
+    font-weight: 1000;
+}
+
+.card-properties {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+/* Style each property item */
+.card-property {
+    font-size: 1.3rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.card-property:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-left-color: var(--accent);
+    transform: translateX(5px);
+}
+
+/* Add a vertical divider between property name and value */
+.card-property .property-name {
+    display: inline-block;
+    margin-right: 0.5rem;
+    position: relative;
+}
+
+.card-property .property-name::after {
+    content: "•";
+    margin-left: 0.5rem;
+    color: var(--accent);
+    opacity: 0.7;
+}
+
+.property-value {
+    font-style: italic;
+}
+
+
+
+/* Add decorative elements to the card-properties section */
+.card-properties::before {
+    content: "✦ Properties ✦";
+    display: block;
+    text-align: center;
+    color: var(--accent);
+    font-weight: bold;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+}
+/* Book color variations based on edition types */
+.book-spine.unspecified {
+    background-color: #9b0000; /* Default red color */
+}
+
+.book-spine.first-known {
+    background-color: #006699; /* Blue for first known editions */
+}
+
+.book-spine.known {
+    background-color: #336633; /* Green for known editions */
+}
+
+.book-spine.manuscript {
+    background-color: #996633; /* Brown for manuscripts */
+}
+
+/* Matching cover colors */
+.book-cover.unspecified {
+    background-color: #b50000;
+}
+
+.book-cover.first-known {
+    background-color: #0077b3;
+}
+
+.book-cover.known {
+    background-color: #408040;
+}
+
+.book-cover.manuscript {
+    background-color: #b37a40;
+}
+
+/* Add responsiveness */
+@media (max-width: 768px) {
+    .relevant-info {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .info {
+        width: 100%;
+    }
+}
