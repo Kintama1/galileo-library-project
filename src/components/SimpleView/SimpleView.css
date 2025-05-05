@@ -1,0 +1,50 @@
+/* SimpleView.css - updated for left alignment and consistent width */
+.simple-view-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto 1rem;
+    padding: 1.5rem;
+    background-color: var(--secondary2);
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .simple-view-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-color: var(--accent3);
+  }
+  
+  .book-info-row {
+    display: flex;
+    align-items: baseline;
+    text-align: left;
+  }
+  
+  .book-info-label {
+    color: var(--accent3);
+    font-weight: bold;
+    width: 70px; /* Fixed width for labels */
+    flex-shrink: 0; /* Prevent shrinking */
+  }
+  
+  .book-info-value {
+    font-style: italic;
+    text-align: left;
+  }
+  
+  /* Add a decorative element similar to other components */
+  .simple-view-container::before {
+    content: "";
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    margin-bottom: 0.5rem;
+    border-radius: 3px;
+  }

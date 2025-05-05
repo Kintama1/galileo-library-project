@@ -161,34 +161,6 @@ h3 {
     background-color: #9b0000; /* Default red color */
 }
 
-.book-spine.first-known {
-    background-color: #006699; /* Blue for first known editions */
-}
-
-.book-spine.known {
-    background-color: #336633; /* Green for known editions */
-}
-
-.book-spine.manuscript {
-    background-color: #996633; /* Brown for manuscripts */
-}
-
-/* Matching cover colors */
-.book-cover.unspecified {
-    background-color: #b50000;
-}
-
-.book-cover.first-known {
-    background-color: #0077b3;
-}
-
-.book-cover.known {
-    background-color: #408040;
-}
-
-.book-cover.manuscript {
-    background-color: #b37a40;
-}
 
 /* Add responsiveness */
 @media (max-width: 768px) {

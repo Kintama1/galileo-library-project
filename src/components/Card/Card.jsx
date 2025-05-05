@@ -68,7 +68,11 @@ export default function Card({book}) {
                         property === 'YearofPublication' ||
                         property === 'PlaceofPublication' ||
                         property === 'ID' || 
-                        property === 'Country'
+                        property === 'Country' ||
+                        property === 'Height' ||
+                        property === 'SpineWidth' ||
+                        property === 'ShortTitle' ||
+                        property === 'IDalpha'
                     ) {
                         return null;                
                     }

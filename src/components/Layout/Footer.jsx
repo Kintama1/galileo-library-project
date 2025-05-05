@@ -5,7 +5,7 @@ function Footer() {
   return (
     <div className="decorative-footer">
       <div className="footer-pattern"></div>
-      <div className="footer-text">Galileo Library Project</div>
+      <div className="footer-text">Galileo's Library Project</div>
     </div>
   );
 }

@@ -1,0 +1,92 @@
+/* PageControls.css */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+  padding: 15px;
+  background-color: var(--secondary2);
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.pagination-controls button.pagination-link,
+.pagination-controls a.pagination-link {
+  background-color: var(--accent);
+  color: white;
+  font-size: 0.9rem;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  margin: 0 3px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-controls button.pagination-link:hover,
+.pagination-controls a.pagination-link:hover {
+  background-color: var(--accent2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.pagination-controls button.pagination-link:active,
+.pagination-controls a.pagination-link:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.pagination-controls button.pagination-link.active,
+.pagination-controls a.pagination-link.active {
+  background-color: var(--accent3);
+  font-weight: 700;
+  transform: scale(1.05);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.pagination-controls .pagination-ellipsis {
+  padding: 0 8px;
+  font-weight: bold;
+  color: var(--accent3);
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Add styles for Previous/Next buttons */
+.pagination-controls button.pagination-link:first-child,
+.pagination-controls button.pagination-link:last-child,
+.pagination-controls a.pagination-link:first-child,
+.pagination-controls a.pagination-link:last-child {
+  padding: 8px 15px;
+  min-width: 80px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .pagination-controls {
+    padding: 10px;
+  }
+  
+  .pagination-controls button.pagination-link,
+  .pagination-controls a.pagination-link {
+    min-width: 35px;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+  
+  .pagination-controls button.pagination-link:first-child,
+  .pagination-controls button.pagination-link:last-child,
+  .pagination-controls a.pagination-link:first-child,
+  .pagination-controls a.pagination-link:last-child {
+    min-width: 70px;
+  }
+}

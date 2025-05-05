@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 
-const SHEET_ID = '1nvMTnx_byDewaKDZCcbH9VUxYWqQ87BjgUtdZSZ3A68';
+const SHEET_ID = '1yIVcA6TT4jpTiGXdvnr-KXGFZvJ8PE1V6Tz7rjNtqWI';
 const TAB_NAME= 'sheet1';
 
 export async function fetchBooksFromSheet() {
@@ -18,7 +18,6 @@ export async function fetchBooksFromSheet() {
     }
   }
 
-  // Add this function to src/utils/api.js
 
   function parseCSVData(csvData) {
     // Split the CSV by newlines

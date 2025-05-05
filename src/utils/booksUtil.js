@@ -19,11 +19,23 @@ export function prepareBooks(rawBooksData) {
                 detailedBook[key] = value === '""' ? '' : value;
             }
             else {
-                detailedBook[key] = 'Unknown';  
+                detailedBook[key] = 'Not provided';  
             }
+       
+        }
         detailedBook['Height'] = height;
         detailedBook['SpineWidth'] = spineWidth;
-        booksByID[id] = detailedBook;
+        if (id in booksByID) {
+            if (Array.isArray(booksByID[id])) {
+                detailedBook.ID = detailedBook.IDalpha;
+                booksByID[id].push(detailedBook);
+            } else {
+                detailedBook.ID = detailedBook.IDalpha;
+                booksByID[id].ID = booksByID[id].IDalpha;
+                booksByID[id] = [booksByID[id], detailedBook];
+            }
+        } else {
+            booksByID[id] = detailedBook;
         }
     });
 

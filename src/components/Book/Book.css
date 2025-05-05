@@ -41,6 +41,7 @@
     background-color: #9b0000 ;
     transform: rotateY(0deg);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     border-top: 1px solid rgb(233, 230, 230);
@@ -133,6 +134,12 @@
     transition-delay: 0s;
     visibility: visible;
   }
+  .book-volume{
+   position: absolute;
+   top: calc(var(--book-height) - 45px);
+   color: #f8f0e3;
+
+  }
 
 /* Container to hold both book and its shelf */
 .book-container {
@@ -166,4 +173,39 @@
   border-radius: 0 0 3px 3px;
 }
   
-  /* Add depth to the shelf */
+.book-spine.first-known {
+  background-color: #006699; /* Blue for first known editions */
+}
+
+.book-spine.known {
+  background-color: #336633; /* Green for known editions */
+}
+
+.book-spine.manuscript {
+  background-color: #996633; /* Brown for manuscripts */
+}
+.book-spine.multivol{
+  background-color: purple;
+}
+
+/* Matching cover colors */
+.book-cover.unspecified {
+  background-color: #b50000;
+}
+
+.book-cover.first-known {
+  background-color: #0077b3;
+}
+
+.book-cover.known {
+  background-color: #408040;
+}
+
+.book-cover.manuscript {
+  background-color: #b37a40;
+}
+
+.book-cover.multivol {
+  background-color: purple;
+}
+

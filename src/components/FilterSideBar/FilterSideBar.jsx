@@ -32,7 +32,7 @@ function FilterSidebar({ onSidebarToggle, onFilterChange }) {
       updateFilter(name, value);
     }
   };
-  console.log(filters);
+  // console.log(filters);
   if (!filterConfig) {
     return (
       <div className={`filter-sidebar ${expanded ? 'expanded' : 'collapsed'}`}>

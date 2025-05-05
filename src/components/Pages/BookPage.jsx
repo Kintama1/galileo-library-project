@@ -7,8 +7,9 @@ import { useParams, Link } from "react-router-dom";
 
 function BookPage() {
   const { booksById, loading, error } = useLibrary();
+  console.log(booksById);
   const { bookId } = useParams();
-  const book = booksById[bookId];
+  console.log("I can see this page");
   
   if (loading) {
     return <div className="loading-state">Loading book details...</div>;
@@ -17,6 +18,23 @@ function BookPage() {
   if (error) {
     return <div className="error-state">Error: {error}</div>;
   }
+    // At this point, we know booksById is loaded and can be safely used
+    let book;
+  
+    // Handle multi-volume books with alpha ID
+    if (bookId.length > 4) {
+      const baseId = bookId.slice(0, 4);
+      const volumeIndex = bookId.slice(4, 5).charCodeAt(0) - 97;
+      
+      // Only attempt to access the array if it exists and is an array
+      if (booksById[baseId] && Array.isArray(booksById[baseId])) {
+      
+        book = {Volume : volumeIndex + 1,
+          ...booksById[baseId][volumeIndex]};
+      }
+    } else {
+      book = booksById[bookId];
+    }
   
   return (
     <Layout>

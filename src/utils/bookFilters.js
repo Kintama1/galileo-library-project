@@ -1,5 +1,4 @@
 // utils/bookFilters.js
-import { type } from "@testing-library/user-event/dist/type";
 import { createSelectOptions,getUniqueValues } from "./bookDataUtils";
 
 
@@ -20,7 +19,7 @@ export const generateFilterConfig = (books) => {
     class: {
       type: 'select',
       name: 'class',
-      title: 'Manuscript Class',
+      title: 'Type of Material',
       options: createSelectOptions(books, 'Class', 'All Editions')
     },
     country: {
@@ -79,12 +78,12 @@ export const countActiveFilters = (filters) => {
     
     return books.filter(book => {
       // Year range filter
-      if (filters.yearFrom && book.YearofPublication && book.YearofPublication !== 'Unknown') {
+      if (filters.yearFrom && book.YearofPublication && book.YearofPublication !== 'Not provided') {
         if (Number(book.YearofPublication) < Number(filters.yearFrom)) {
           return false;
         }
       }
-      if (filters.yearTo && book.YearofPublication && book.YearofPublication !== 'Unknown') {
+      if (filters.yearTo && book.YearofPublication && book.YearofPublication !== 'Not provided') {
         if (Number(book.YearofPublication) > Number(filters.yearTo)) {
           return false;
         }

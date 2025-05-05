@@ -12,10 +12,18 @@ function Book(props) {
         if (editionType.includes('KnownEdition')) return 'known';
         if (editionType.includes('manuscript')) return 'manuscript';
         if (editionType.includes('UnspecifiedEdition')) return 'unspecified';
+        if (editionType.includes('multivol')) return 'multivol'
     };
     const editionClass = getEditionClass();
-    function handleBookClick(){
-        window.open(`/book/${props.id|| ''}`, '_blank');
+    function handleBookClick() {
+        if (props.editionType.includes('multivol') && props.onClick) {
+            // Call the provided onClick handler for multi-volumes
+            props.onClick();
+        } else {
+            // For regular books, navigate to the book detail page
+            console.log(`${props.id}`)
+            window.open(`/book/${props.id || ''}`, '_blank');
+        }
     }
     return (
         <div className="book-container"
@@ -36,6 +44,8 @@ function Book(props) {
                     <div className="spine-decoration"></div>
                     <div className="spine-decoration"></div>
                     <span className="book-title">{props.title}</span>
+                    {props.volume && <span className='book-volume'> Vol{props.volume} </span>}
+
                 </div>
                 <div className={`book-side book-cover ${editionClass}`}>
                     <div className={`book-cover-title ${hovered ? 'hovered' : ''}`}>{props.title}</div>

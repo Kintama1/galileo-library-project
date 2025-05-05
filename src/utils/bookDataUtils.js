@@ -16,7 +16,7 @@ export const getUniqueValues = (books, property, sort = true, numeric = false) =
       .filter(value => 
         value && 
         value.toString().trim() !== '' && 
-        value !== 'Unknown'
+        value !== 'Not provided'
       )
   )];
   
