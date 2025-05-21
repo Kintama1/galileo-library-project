@@ -15,14 +15,26 @@ function SearchBar({ books }) {
       return;
     }
     
-    // Filter books to find titles that match the search term
-    const foundSuggestions = books
-      .filter(book => 
+    
+    const foundSuggestions = [];
+    books.forEach(book=> {
+      if (Array.isArray(book)){
+        if(book[0] && book[0].Title &&  book[0].Title.toLowerCase().includes(searchTerm.toLocaleLowerCase())){
+          foundSuggestions.push({
+            ID: book[0].ID.slice(0,4),
+            Title: book[0].Title,
+            Author: book[0].Author || "Not provided",
+            isMultiVolume: true
+          })
+        }
+      }
+      else {
+        if(book && book.Title && book.Title.toLowerCase().includes(searchTerm.toLocaleLowerCase())){
+          foundSuggestions.push(book);
+        }
+      }
 
-        book.Title.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-      // Limit to top 5 suggestions
-      ;
+    })
     setSuggestionsTotal(foundSuggestions.length)
     setSuggestions(foundSuggestions.slice(0,5));
   }, [searchTerm, books]);
@@ -33,7 +45,10 @@ function SearchBar({ books }) {
   };
   
   const handleSuggestionClick = (book) => {
-    // Navigate to the book detail page 
+    // Navigate to the book detail page
+    if (book.isMultiVolume){
+      window.location.href = `/advanced-search/page/1?bookId=${encodeURIComponent(book.ID)}`;
+    }
     window.open(`/book/${book.ID|| ''}`, '_blank');
     setSearchTerm('');
     setShowSuggestions(false);
@@ -51,13 +66,8 @@ function SearchBar({ books }) {
     // Navigate to advanced search with the current search term in the URL
     window.location.href = `/advanced-search/page/1?term=${encodeURIComponent(searchTerm)}`;
     
-    // Or with React Router's useNavigate hook:
-    // const navigate = useNavigate();
-    // navigate(`/advanced-search?term=${encodeURIComponent(searchTerm)}`);
   };
-  const handleAdvancedSearchClick = () => {
-    
-  }
+  
 
   return (
     <div className="search-container">
@@ -79,6 +89,15 @@ function SearchBar({ books }) {
               onClick={() => handleSuggestionClick(book)}
               className="suggestion-item"
             >
+              {book.isMultiVolume && (
+                <span className='multi-volume-badge'>
+                  <svg width="12" height="12" viewBox="0 0 24 24" style={{marginRight: '4px', verticalAlign: 'middle'}}>
+                    <path fill="currentColor" d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z"/>
+                    <path fill="currentColor" d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z"/>
+                  </svg>
+                  Multi-Volume
+                </span>
+              )}
               <div className='author-entry'>
               <span className='label'>Author : </span> {book.Author} <br/>
               </div>
@@ -86,6 +105,7 @@ function SearchBar({ books }) {
               <span className='label'> Title : </span>
               {getHighlightedText(book.Title, searchTerm)}
               </div>
+              
             </li>
           ))}
           {(suggestionsTotal - 5) > 0 && (

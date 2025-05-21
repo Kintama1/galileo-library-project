@@ -13,14 +13,17 @@ function AdvancedSearch(){
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   
-  
   const {booksById, loading, error } = useLibrary();
   const [searchResults, setSearchResults] = useState([]);
   const [filteredResults, setFilteredResults] = useState([]);
   const [totalResults, setTotalResults] = useState([]);
   const [totalPages, setTotalPages] = useState([]);
   const [pageNumbers, SetPageNumbers] = useState([]);
+  //Modifying this so it handles params
   const searchTerm = searchParams.get('term');
+  const bookId = searchParams.get('bookId');
+  console.log("search term", searchTerm);
+  console.log("bookId", bookId);
     // Number of search results to show per page
   const resultsPerPage = 20;
   console.log(booksById);
@@ -31,19 +34,53 @@ function AdvancedSearch(){
   useEffect(() => {
     if (searchTerm && !loading && Object.keys(booksById).length > 0) {
       console.log("Running search with loaded books");
+
       const booksArray = Object.values(booksById);
+      console.log("seeing books by array", booksArray);
       // Filter books that match the search term
-      const results = booksArray.filter(book => 
-        book.Title.toLowerCase().includes(searchTerm.toLowerCase())
-      );
+      const results = [];
+      booksArray.forEach(book => {
+        if (Array.isArray(book)){ 
+          if(book[0] && book[0].Title &&  book[0].Title.toLowerCase().includes(searchTerm.toLocaleLowerCase())){
+          results.push({
+            ID: book[0].ID.slice(0,4),
+            Title: book[0].Title,
+            Author: book[0].Author || "Not provided",
+            isMultiVolume: true
+          })
+        }
+      }
+      else {
+        if(book && book.Title && book.Title.toLowerCase().includes(searchTerm.toLocaleLowerCase())){
+          results.push({
+            ID: book.ID.slice(0,4),
+            Title: book.Title,
+            Author: book.Author || "Not provided",
+            isMultiVolume: false
+          })
+        }
+      }
+
+      })
+      
+          
+      setSearchResults(results);
+    }
+    else if (bookId && !loading && Object.keys(booksById).length > 0) {
+      console.log("Running search with loaded books");
+      const results = booksById[bookId];
+      console.log("seeing books by array", results);
       setSearchResults(results);
     }
   }, [searchTerm, booksById, loading]);
+  //Right here write the code for when the bookId is the search term, meaning we are dealing with a multivolume book
+
   
  // Modified second useEffect
 useEffect(() => {
   if (searchResults.length > 0) {
     // Calculate total pages based on search results
+    console.log("search results", searchResults);
     const total = searchResults.length;
     setTotalResults(total);
     
@@ -53,6 +90,8 @@ useEffect(() => {
     // Get paginated results only when needed
     const paginatedResults = getPaginatedBooks(currentPage, searchResults, resultsPerPage);
     setFilteredResults(paginatedResults);
+    console.log("paginated results", paginatedResults);
+    console.log("filtered results", filteredResults);
     
     // Calculate page numbers
     SetPageNumbers(getPageNumbers(currentPage, pages));
@@ -80,13 +119,14 @@ useEffect(() => {
                   ← Back to Library
                 </Link>
               </div>
-              <SearchBar/>
-              {(searchTerm) ? (
+              <SearchBar books  = {Object.values(booksById)}/>
+              {(searchTerm || bookId) ? (
                 <div>
                   <h1>Advanced Search Results</h1>
                   <p className="search-info">
                     Showing results {Math.min(totalResults, (currentPage - 1) * resultsPerPage + 1)} - {Math.min(totalResults, currentPage * resultsPerPage)} of {totalResults} for: 
-                    <span className="search-term"> {searchTerm}</span>
+                    {searchTerm &&(<span className="search-term"> {searchTerm}</span>)}
+                    {bookId && (<span className="search-term"> ID{bookId}</span>)}
                   </p>
                   <div className="search-results">
                   {filteredResults.length > 0 ? ( 

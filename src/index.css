@@ -10,17 +10,7 @@
   --accent2: rgb(188, 131, 70);
   --accent3: rgb(135, 97, 56);
 }
-.label {
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--accent3);
-}
-.highlighted {
-  color: var(--accent3);
-  background-color: var(--secondary);
-  text-decoration: underline;
-  font-weight: bold;
-}
+
 body {
   font-family: 'Noto Sans Egyptian Hieroglyphs';
   font-weight: 400;

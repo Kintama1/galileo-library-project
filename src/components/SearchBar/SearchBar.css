@@ -58,3 +58,27 @@
     background-color: var(--accent);
     color: white;
   }
+  .label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent3);
+  }
+  .highlighted {
+    color: var(--accent3);
+    background-color: var(--secondary);
+    text-decoration: underline;
+    font-weight: bold;
+  }
+.multi-volume-badge {
+  background-color: var(--accent3);
+  color: white;
+  font-size: 0.8rem;
+  padding: 3px 8px;
+  border-radius: 12px;
+  margin-right: 8px;
+  display: inline-block;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
