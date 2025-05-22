@@ -86,20 +86,85 @@ function FilterItem({
             className="filter-input"
           />
         );
-        
-      default: // text
-        return (
-          <input
-            type="text"
-            name={name}
-            value={value || ''}
-            onChange={onChange}
-            placeholder={placeholder}
-            className="filter-input"
-          />
-        );
-    }
-  };
+    case 'multiselect':
+      return (
+        <div className="checkbox-multiselect">
+          {options.map(option => (
+            <div key={option.value} className="checkbox-option">
+              <label className="checkbox-label">
+                <input
+                  type="checkbox"
+                  checked={Array.isArray(value) && value.includes(option.value)}
+                  onChange={() => {
+                    let newValue;
+                    if (Array.isArray(value)) {
+                      if (value.includes(option.value)) {
+                        newValue = value.filter(val => val !== option.value);
+                      } else {
+                        newValue = [...value, option.value];
+                      }
+                    } else {
+                      newValue = [option.value];
+                    }
+                    
+                    onChange({
+                      target: {
+                        name: name,
+                        value: newValue
+                      }
+                    });
+                  }}
+                />
+                <span className="checkbox-custom"></span>
+                <span className="checkbox-text">{option.label}</span>
+              </label>
+            </div>
+          ))}
+          
+          {/* Display selected options as tags */}
+          {Array.isArray(value) && value.length > 0 && (
+            <div className="selected-tags">
+              {value.map(val => {
+                const option = options.find(opt => opt.value === val);
+                return option && (
+                  <div key={val} className="selected-tag">
+                    {option.label}
+                    <button 
+                      className="remove-tag"
+                      onClick={() => {
+                        const newValue = value.filter(v => v !== val);
+                        onChange({
+                          target: {
+                            name: name,
+                            value: newValue
+                          }
+                        });
+                      }}
+                      aria-label={`Remove ${option.label}`}
+                    >
+                      ×
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      );
+            
+          default: // text
+            return (
+              <input
+                type="text"
+                name={name}
+                value={value || ''}
+                onChange={onChange}
+                placeholder={placeholder}
+                className="filter-input"
+              />
+            );
+        }
+      };
   
   return (
     <div className="filter-item">

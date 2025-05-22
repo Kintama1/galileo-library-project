@@ -1,0 +1,162 @@
+/* Container for the button when collapsed */
+.legend-button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 30px 0;
+}
+
+/* Styled button that looks like your image */
+.legend-button {
+  background-color: #f5e8d0;
+  border: 1px solid #c68d50;
+  border-radius: 8px;
+  color: #87613b;
+  font-size: 1.5rem;
+  padding: 12px 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* This spreads content across full width */
+  width: 100%; /* Make button take full container width */
+  max-width: 1000px; /* Match the expanded legend max-width */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.legend-button:hover {
+  background-color: #f0e0c0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.plus-icon {
+  margin-left: 15px;
+  font-weight: bold;
+}
+
+/* Full legend container when expanded */
+.book-legend {
+  max-width: 1000px;
+  margin: 30px auto;
+  background-color: #f5e8d0;
+  border-radius: 8px;
+  border: 1px solid #c68d50;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: fadeIn 0.3s ease-in-out;
+}
+.legend-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #c68d50;
+  cursor: pointer; /* Add cursor pointer to show it's clickable */
+}
+
+
+.legend-title {
+  margin: 0;
+  color: #87613b;
+  font-size: 1.5rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #87613b;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Prevent this from intercepting clicks */
+}
+
+.close-button:hover {
+  color: #a07040;
+}
+
+.legend-content {
+  padding: 20px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.legend-section {
+  margin-bottom: 25px;
+}
+
+.legend-section h4 {
+  color: #a07040;
+  border-bottom: 1px solid #c68d50;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+.legend-items, .format-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: space-between;
+}
+
+.legend-item, .format-item {
+  display: flex;
+  align-items: center;
+  width: calc(50% - 10px);
+  margin-bottom: 10px;
+}
+
+.color-sample, .format-sample {
+  width: 40px;
+  height: 60px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-right: 10px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Edition type colors */
+.color-sample.unspecified { background-color: rgb(190, 162, 130); }
+.color-sample.first-known { background-color: rgb(166, 124, 82); }
+.color-sample.known { background-color: rgb(100, 72, 50); }
+.color-sample.manuscript { background-color: rgb(216, 188, 154); }
+.color-sample.multivol { background-color: #722F37; }
+
+/* Format sizes - showing relative height differences */
+.format-sample.format-2 { height: 80px; background-color: rgb(166, 124, 82); }
+.format-sample.format-4 { height: 70px; background-color: rgb(166, 124, 82); }
+.format-sample.format-8 { height: 60px; background-color: rgb(166, 124, 82); }
+.format-sample.format-12 { height: 50px; background-color: rgb(166, 124, 82); }
+.format-sample.format-16 { height: 45px; background-color: rgb(166, 124, 82); }
+.format-sample.format-32 { height: 40px; background-color: rgb(166, 124, 82); }
+
+.legend-description, .format-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.legend-label, .format-label {
+  font-weight: bold;
+  color: #87613b;
+  margin-bottom: 3px;
+}
+
+.legend-detail, .format-detail {
+  font-size: 0.85rem;
+  color: #2b2521;
+  font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .legend-item, .format-item {
+    width: 100%;
+  }
+}

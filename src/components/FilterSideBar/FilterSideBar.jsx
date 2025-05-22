@@ -120,6 +120,15 @@ function FilterSidebar({ onSidebarToggle, onFilterChange }) {
           onChange={handleFilterChange}
           options={filterConfig.format.options}
         />
+        {/* Sources Filter (add this after your other filters) */}
+        <FilterItem
+          title={filterConfig.sources.title}
+          type={filterConfig.sources.type}
+          name={filterConfig.sources.name}
+          value={filters.sources}
+          onChange={handleFilterChange}
+          options={filterConfig.sources.options}
+        />
         
         {/* Reset Filters Button */}
         

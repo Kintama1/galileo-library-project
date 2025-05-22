@@ -1,0 +1,93 @@
+/* src/components/Pages/css/UnderWorkPage.css */
+.under-work-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: var(--text);
+}
+
+.navigation-bar {
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--accent);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.back-button:hover {
+  background-color: var(--accent3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.under-work-content {
+  text-align: center;
+  background-color: var(--secondary2);
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  padding: 3rem;
+  margin: 2rem 0;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.under-work-content h1 {
+  color: var(--accent3);
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+}
+
+.construction-icon {
+  font-size: 5rem;
+  margin: 1.5rem 0;
+  animation: bounce 2s infinite;
+}
+
+.message {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent2);
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--text);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .under-work-content {
+    padding: 2rem;
+  }
+  
+  .under-work-content h1 {
+    font-size: 2rem;
+  }
+  
+  .construction-icon {
+    font-size: 4rem;
+  }
+  
+  .message {
+    font-size: 1.2rem;
+  }
+}

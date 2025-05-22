@@ -40,6 +40,16 @@ export const generateFilterConfig = (books) => {
       title: 'Format',
       options: createSelectOptions(books, 'Format', 'All Formats', true)
     },  
+    sources: {
+      type: 'multiselect',
+      name: 'sources',
+      title: 'Source Collections',
+      options: [
+        { value: 'FavaroSource-Arch3483', label: 'Favaro Archive' },
+        { value: 'FavaroSource-Gal308', label: 'Galileo Collection' },
+        { value: 'FavaroSource-Palat1195', label: 'Palatine Collection' }
+      ]
+    }
   }; 
 };
 
@@ -115,6 +125,22 @@ export const countActiveFilters = (filters) => {
       }
       if (filters.format && filters.format !== 'all' && book.Format) {
         if (book.Format !== filters.format) {
+          return false;
+        }
+      }
+      if (filters.sources && Array.isArray(filters.sources) && filters.sources.length > 0) {
+        const allSourcesPresent = filters.sources.every(source => {
+          if (source === 'FavaroSource-Arch3483') {
+            return book['FavaroSource-Arch3483'] === 'G';
+          } else if (source === 'FavaroSource-Gal308') {
+            return book['FavaroSource-Gal308'] === 'S';
+          } else if (source === 'FavaroSource-Palat1195') {
+            return book['FavaroSource-Palat1195'] === 'V';
+          }
+          return false;
+        });
+        
+        if (!allSourcesPresent) {
           return false;
         }
       }

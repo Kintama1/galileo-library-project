@@ -48,30 +48,30 @@ function HomePage() {
         <section className="explore-section">
           <h2>Explore the Project</h2>
           <div className="links-container">
-            <a href="https://example.com/data" className="project-link" target="_blank" rel="noopener noreferrer">
+            <Link to="/data" className="project-link">
               <span className="link-text">Data</span>
               <span className="external-icon">↗</span>
-            </a>
-            <a href="https://example.com/visualizations" className="project-link" target="_blank" rel="noopener noreferrer">
+            </Link>
+            <Link to="/visualizations" className="project-link">
               <span className="link-text">Visualizations</span>
               <span className="external-icon">↗</span>
-            </a>
-            <a href="https://example.com/code" className="project-link" target="_blank" rel="noopener noreferrer">
+            </Link>
+            <Link to="/code" className="project-link">
               <span className="link-text">Code</span>
               <span className="external-icon">↗</span>
-            </a>
-            <a href="https://example.com/student-research" className="project-link" target="_blank" rel="noopener noreferrer">
+            </Link>
+            <Link to="/student-research" className="project-link">
               <span className="link-text">Student Research</span>
               <span className="external-icon">↗</span>
-            </a>
-            <a href="https://example.com/vignettes" className="project-link" target="_blank" rel="noopener noreferrer">
+            </Link>
+            <Link to="/vignettes" className="project-link">
               <span className="link-text">Vignettes</span>
               <span className="external-icon">↗</span>
-            </a>
-            <a href="https://example.com/experiments" className="project-link" target="_blank" rel="noopener noreferrer">
+            </Link>
+            <Link to="/experiments" className="project-link">
               <span className="link-text">Analytical Experiments</span>
               <span className="external-icon">↗</span>
-            </a>
+            </Link>
           </div>
         </section>
         
@@ -88,7 +88,7 @@ function HomePage() {
               We are grateful for the funding support from Bowdoin's Faculty Development 
               Committee to pay for the labor to create the site. The process for creating the 
               data that informs both the site and the book involved even more individuals, 
-              credited on the page for <a href="/contributors">contributors</a>.
+              credited on the page for <Link to="/contributors">contributors</Link>.
             </p>
           </div>
           <div className="citation-info">

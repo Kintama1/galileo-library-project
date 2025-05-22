@@ -7,6 +7,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import FilterSidebar from "../FilterSideBar/FilterSideBar";
 import FilterSummary from "../FilterSideBar/FilterSummary";
 import  PageControls  from "../PageControls/PageControls";
+import BookLegend from "../Book/BookLegend";
 import { useParams, Link } from "react-router-dom";
 import { useLibrary } from "../../context/LibraryContext";
 import { filterBooks } from "../../utils/bookFilters";
@@ -50,7 +51,11 @@ function LibraryPage() {
           <h1>Galileo's Library</h1>
           <div className="nav">
             <SearchBar books={booksArray} />
+           
           </div>
+           <div className="legend-container">
+                <BookLegend />
+            </div>
           {(debouncedFilters.yearFrom || debouncedFilters.yearTo || 
             debouncedFilters.class !== 'all' || 
             debouncedFilters.country !== 'all' || 

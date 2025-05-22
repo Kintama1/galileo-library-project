@@ -19,6 +19,7 @@ export default function LibraryProvider({children}) {
         country: 'all',
         city: 'all',
         format: 'all',
+        sources:[]
     });
     const debouncedFilters = {
         yearFrom: useDebounce(filters.yearFrom, 500),
@@ -27,6 +28,7 @@ export default function LibraryProvider({children}) {
         country: filters.country,
         city: filters.city,
         format: filters.format,
+        sources : filters.sources
     };
 
     const [filterConfig, setFilterConfig] = useState(null);
@@ -64,7 +66,8 @@ export default function LibraryProvider({children}) {
             class: 'all',
             city: 'all',
             format: 'all',
-            country: 'all'
+            country: 'all',
+            sources: []
         });
     };
     const value = {

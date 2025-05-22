@@ -38,7 +38,7 @@
     width: var(--spine-width);
     height: var(--book-height);
     left : 0;
-    background-color: #9b0000 ;
+    background-color: rgb(190, 162, 130);
     transform: rotateY(0deg);
     display: flex;
     flex-direction: column;
@@ -82,13 +82,13 @@
   height: var(--cover-width);
   transform: rotateX(-90deg) translateZ(-140px) translateY(73px) translateX(-0.5px);
   top: 65px;
-  border: 1px solid rgba(0,0,0,0.8);
+  border: 1px solid rgba(77, 57, 32, 0.8);
   background: repeating-linear-gradient(
     90deg,
-    #f1f1f1 0px,
-    #f1f1f1 3px,    /* Thinner white sections for pages */
-    #9f9f9f 3px,    /* Light gray instead of black for page edges */
-    #d9d9d9 4px     /* Thinner line for page edge */
+    #f5e8d0 0px,      /* Cream colored paper */
+    #f5e8d0 3px,      /* Base aged paper color */
+    #d3b78c 3px,      /* Darker yellowed edge */
+    #e6d2b5 4px       /* Slightly lighter transition */
   );
 }
 
@@ -97,7 +97,7 @@
     height: var(--book-height);
     /* in the function this left should always be the width of the previous one */
     left : var(--spine-width); 
-    background-color: #b50000;
+    background-color: rgb(190, 162, 130);
     transform: rotateY(90deg);
     display: flex;
     flex-direction: column;
@@ -172,40 +172,43 @@
   background-color: rgba(0, 0, 0, 0.2);
   border-radius: 0 0 3px 3px;
 }
-  
+
+.book-spine.unspecified {
+  background-color: rgb(190, 162, 130);
+}
 .book-spine.first-known {
-  background-color: #006699; /* Blue for first known editions */
+  background-color: rgb(166, 124, 82) 
 }
 
 .book-spine.known {
-  background-color: #336633; /* Green for known editions */
+  background-color: rgb(100, 72, 50); 
 }
 
 .book-spine.manuscript {
-  background-color: #996633; /* Brown for manuscripts */
+  background-color: rgb(216, 188, 154); 
 }
-.book-spine.multivol{
-  background-color: purple;
+.book-spine.multivol {
+  background-color: #722F37; /* Rich burgundy/wine color */
 }
 
 /* Matching cover colors */
 .book-cover.unspecified {
-  background-color: #b50000;
+  background-color: rgb(190, 162, 130);
 }
 
+
 .book-cover.first-known {
-  background-color: #0077b3;
+  background-color: rgb(166, 124, 82);
 }
 
 .book-cover.known {
-  background-color: #408040;
+  background-color: rgb(100, 72, 50);
 }
 
 .book-cover.manuscript {
-  background-color: #b37a40;
+  background-color: rgb(216, 188, 154);
 }
 
 .book-cover.multivol {
-  background-color: purple;
+  background-color: #722F37;
 }
-

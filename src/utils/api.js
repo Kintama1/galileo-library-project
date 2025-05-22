@@ -2,6 +2,7 @@ import axios from 'axios';
 
 
 const SHEET_ID = '1yIVcA6TT4jpTiGXdvnr-KXGFZvJ8PE1V6Tz7rjNtqWI';
+const COLUMNS_ID = '1w9IaVZ-5qAKMzsIlJ57H0IkjUR5MqJu2SHpNdk7I8k8';
 const TAB_NAME= 'sheet1';
 
 export async function fetchBooksFromSheet() {
@@ -17,7 +18,48 @@ export async function fetchBooksFromSheet() {
       return [];
     }
   }
+  
+export async function fetchColumnsFromSheet() {
+  try {
+    // This URL format allows accessing a published Google Sheet as CSV
+    const url = `https://docs.google.com/spreadsheets/d/${COLUMNS_ID}/gviz/tq?tqx=out:csv&sheet=${TAB_NAME}`;
+    
+    const response = await axios.get(url);  
+    return parseColumnExplanations(response.data);
+    
+  } catch (error) {
+    console.error('Error fetching columns:', error);
+    return {};
+  }
+}
 
+
+
+  function parseColumnExplanations(csvData) {
+  // Split the CSV by newlines
+  const rows = csvData.split('\n');
+  
+  // Create an object to store column name -> explanation mappings
+  const explanations = {};
+  
+  // Skip the header row (row 0) and process each data row
+  for (let i = 1; i < rows.length; i++) {
+    // Split each row into column name and explanation
+    // This regex handles quoted CSV values properly
+    const values = rows[i].match(/(".*?"|[^",]+)(?=\s*,|\s*$)/g) || [];
+    
+    if (values.length >= 2) {
+      // Remove quotes from values
+      const columnName = values[0].replace(/^"(.+)"$/, '$1').trim();
+      const explanation = values[1].replace(/^"(.+)"$/, '$1').trim();
+      
+      // Add to our explanations object
+      explanations[columnName] = explanation;
+    }
+  }
+  
+  return explanations;
+}
 
   function parseCSVData(csvData) {
     // Split the CSV by newlines
