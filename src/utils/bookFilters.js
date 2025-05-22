@@ -77,6 +77,10 @@ export const countActiveFilters = (filters) => {
     }
     
     return books.filter(book => {
+      if (Array.isArray(book)) {
+        book = book[0];
+      }
+      // Author filter
       // Year range filter
       if (filters.yearFrom && book.YearofPublication && book.YearofPublication !== 'Not provided') {
         if (Number(book.YearofPublication) < Number(filters.yearFrom)) {

@@ -4,18 +4,14 @@ import './SimpleView.css';
 function SimpleView( book ) {
   function handleClick() {
     if (book.isMultiVolume) {
-    console.log("this should be happening here");
     
     window.open(`/advanced-search/page/1?bookId=${encodeURIComponent(book.id)}`, '_blank');
     }
     else {
-      console.log("but we are for some reason getting this");
       window.open(`/book/${book.id || ''}`, '_blank');
       
     }
-  };
-  console.log("seeing book information",book, book.author);
-  
+  };  
   return (
     <div className="simple-view-container" onClick={handleClick}>
       {book.isMultiVolume &&(

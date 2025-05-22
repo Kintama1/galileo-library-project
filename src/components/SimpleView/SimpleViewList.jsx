@@ -4,7 +4,6 @@ import getHighlightedText from "../../utils/searchUtils";
 import "./SimpleViewList.css";
 
 function SimpleViewList({ books, searchTerm }) {
-  console.log(books);
   return (
     <div className="simple-view-list">
     {searchTerm && books.map((book, index) => (
