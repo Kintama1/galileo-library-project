@@ -1,0 +1,74 @@
+/* src/components/Tooltip/Tooltip.css */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-trigger {
+  display: inline-block;
+  cursor: help;
+}
+
+.tooltip-content {
+  position: absolute;
+  bottom: 120%; /* Move it a bit higher above the text */
+  left: -20px; /* Position it more to the left side of the term */
+  background-color: var(--secondary2);
+  color: var(--text);
+  padding: 12px 15px;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  width: 250px; /* Wider tooltip */
+  max-width: 90vw; /* Prevent overflow on mobile */
+  z-index: 100;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  text-align: left;
+  line-height: 1.4;
+  font-weight: normal; /* Ensure normal weight regardless of parent */
+}
+
+/* Arrow pointing to the term */
+.tooltip-content:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 30px; /* Position the arrow to align with the term */
+  margin-left: -5px;
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--accent) transparent transparent transparent;
+}
+
+/* Add a subtle animation */
+@keyframes tooltipFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tooltip-content {
+  animation: tooltipFadeIn 0.2s ease-out;
+}
+
+/* Improve visibility on dark backgrounds */
+.tooltip-content {
+  backdrop-filter: blur(2px);
+}
+
+/* Make sure the info icon is visible */
+.property-name.property-has-tooltip::after {
+  content: "ⓘ";
+  font-size: 0.75em;
+  margin-left: 5px;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
+/* Ensure tooltip doesn't get cut off at screen edges */
+@media (max-width: 768px) {
+  .tooltip-content {
+    width: 230px;
+    left: -15px;
+  }
+}

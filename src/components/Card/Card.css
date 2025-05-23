@@ -5,7 +5,6 @@
     margin-bottom: 1.5rem;
 }
 
-/* Add decorative elements around the Book ID */
 .title h2 {
     display: inline-block;
     position: relative;
@@ -35,7 +34,6 @@
     overflow: hidden;
 }
 
-/* Add a decorative element to the top of the card */
 .card::before {
     content: "";
     position: absolute;
@@ -145,7 +143,6 @@ h3 {
 
 
 
-/* Add decorative elements to the card-properties section */
 .card-properties::before {
     content: "✦ Properties ✦";
     display: block;
@@ -156,9 +153,68 @@ h3 {
     letter-spacing: 2px;
     font-size: 0.9rem;
 }
-/* Book color variations based on edition types */
+.property-name.property-has-tooltip {
+  border-bottom: 1px dotted var(--accent3);
+  cursor: help;
+  display: inline-flex;
+  align-items: center;
+}
 
-/* Add responsiveness */
+.property-name.property-has-tooltip::after {
+  content: "ⓘ";
+  font-size: 0.75em;
+  margin-left: 5px;
+  color: var(--accent);
+  .card-property {
+  font-size: 1.3rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.property-name {
+  color: var(--accent3);
+  font-weight: 1000;
+  margin-right: 0.5rem;
+}
+
+.property-name.property-has-tooltip {
+  cursor: help;
+  border-bottom: 1px dotted var(--accent);
+  display: inline-flex;
+  align-items: center;
+}
+
+.property-value {
+  font-style: italic;
+  flex: 1;
+  text-align: right;
+}
+
+.property-value em {
+  opacity: 0.7;
+  font-style: italic;
+}
+
+
+@media (max-width: 768px) {
+  .card-property {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  
+  .property-value {
+    text-align: left;
+    padding-left: 10px;
+  }
+}
+}
 @media (max-width: 768px) {
     .relevant-info {
         flex-direction: column;

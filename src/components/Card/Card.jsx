@@ -1,9 +1,13 @@
 import React from "react";
 import './Card.css';
+import Tooltip from './Tooltip';
+import { useLibrary } from '../../context/LibraryContext';
 
 export default function Card({book}) {
-    if (!book) return <div className="book-card-error"> Book not available</div>;
+    const { columnExplanations } = useLibrary();
     
+    if (!book) return <div className="book-card-error"> Book not available</div>;
+
     const formatPropertyName = (name) => {
         return name
             .replace(/([A-Z])/g, ' $1')
@@ -62,28 +66,47 @@ export default function Card({book}) {
             <div className="card-properties">
                 {bookProperties.map(property => {
                     if (
-                        !book[property] ||
-                        property === 'Title' ||
-                        property === 'Author' ||
-                        property === 'YearofPublication' ||
-                        property === 'PlaceofPublication' ||
-                        property === 'ID' || 
-                        property === 'Country' ||
-                        property === 'Height' ||
-                        property === 'SpineWidth' ||
-                        property === 'ShortTitle' ||
-                        property === 'IDalpha'
+                    !book[property] ||
+                    property === 'Title' ||
+                    property === 'Author' ||
+                    property === 'YearofPublication' ||
+                    property === 'PlaceofPublication' ||
+                    property === 'ID' || 
+                    property === 'Country' ||
+                    property === 'Height' ||
+                    property === 'SpineWidth' ||
+                    property === 'ShortTitle' ||
+                    property === 'IDalpha'
                     ) {
-                        return null;                
+                    return null;                
                     }
+                    
+                    const explanation = columnExplanations[property];
+                    
                     return (
-                        <div key={property} className="card-property">
-                            <span className="property-name">{formatPropertyName(property)}</span>
-                            <span className="property-value">{book[property]}</span>
-                        </div>
+                    <div key={property} className="card-property">
+                        {explanation ? (
+                        <Tooltip content={explanation}>
+                            <span className="property-name property-has-tooltip">
+                            {formatPropertyName(property)}
+                            </span>
+                        </Tooltip>
+                        ) : (
+                        <span className="property-name">
+                            {formatPropertyName(property)}
+                        </span>
+                        )}
+                        <span className="property-value">
+                        {book[property] === 'Not provided' ? (
+                            <em>Not provided</em>
+                        ) : (
+                            book[property]
+                        )}
+                        </span>
+                    </div>
                     );
                 })}
-            </div>
+                </div>
         </div>
         </>
     );
